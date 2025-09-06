@@ -1,5 +1,4 @@
 package murach.data;
-
 import murach.business.User;
 
 public class UserDB {
