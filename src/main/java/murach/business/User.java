@@ -8,15 +8,16 @@ public class User implements Serializable {
     private String email;
 
     public User() {
-        firstName = "";
-        lastName = "";
-        email = "";
+        this.firstName = "";
+        this.lastName  = "";
+        this.email     = "";
     }
 
+    // <-- THÊM constructor này
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.lastName  = lastName;
+        this.email     = email;
     }
 
     public String getFirstName() { return firstName; }
