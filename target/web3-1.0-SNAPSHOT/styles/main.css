@@ -1,80 +1,113 @@
-/* ========== Base ========== */
-*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-:root{
-    --teal:#0f7f79;
-    --teal-weak:#b9e1df;
-    --text:#222;
-    --muted:#666;
-    --border:#dcdcdc;
-    --card:#f7f7f7;
-}
-html,body{margin:0}
-body{color:var(--text);background:#fff}
-
-/* ========== Top bar + logo ========== */
-.topbar{height:12px;background:var(--teal-weak)}
-.brand{padding:18px 24px}
-.brand img{height:52px}
-
-/* ========== Layout ========== */
-.container{
-    max-width:760px;
-    margin:0;              /* bỏ auto -> không căn giữa */
-    padding:0 20px 80px;   /* giữ khoảng cách lề trái 20px */
-}
-h1{
-    color:var(--teal);
-    margin:0 0 8px;
-    font-size:34px;
-}
-.lead{
-    color:var(--muted);
-    margin:0 0 18px;
+/* Body and container */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
-/* ========== Card form ========== */
-.form-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:18px 20px 22px;
-    width:480px;           /* khống chế chiều rộng form */
+.topbar {
+    background-color: #2c5f77;
+    height: 10px;
 }
-fieldset{border:0;margin:10px 0 16px;padding:0}
-legend{color:var(--teal);font-weight:bold;margin:10px 0 8px}
 
-label{display:block;margin:8px 0 4px}
-input[type="text"],input[type="email"],input[type="date"],select{
-    width:330px;max-width:100%;
-    padding:7px 10px;border:1px solid #bfc7cc;border-radius:4px;
-    outline:0;
+.brand {
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f7f7;
 }
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="date"]:focus,
-select:focus{border-color:var(--teal)}
 
-/* ========== Radio group ngang ========== */
-.inline-group{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;              /* khoảng cách giữa các lựa chọn */
-    margin-top:6px;
+.brand img {
+    max-width: 120px;
 }
-.inline-group label{
-    display:flex;
-    align-items:center;
-    font-weight:normal;
-}
-.inline-group input{margin-right:6px}
 
-/* khoảng cách giữa 2 checkbox phần “Would you like…” */
-.opt-block{margin:10px 0 16px}
-
-/* ========== Actions ========== */
-.actions{margin-top:10px}
-button{
-    padding:8px 18px;border:1px solid var(--teal);
-    background:var(--teal);color:#fff;border-radius:6px;cursor:pointer
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-button:hover{filter:brightness(.95)}
+
+/* Headings */
+h1 {
+    color: #2c5f77;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p.lead {
+    color: #444;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #2c5f77;
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Radio buttons */
+.radio-group {
+    margin-bottom: 15px;
+}
+
+.radio-label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+/* Checkboxes */
+.checkbox-group {
+    margin-bottom: 15px;
+}
+
+.checkbox-label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+/* Button */
+button[type="submit"],
+.submit-button {
+    background-color: #2c5f77;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover,
+.submit-button:hover {
+    background-color: #1a3a46;
+}
