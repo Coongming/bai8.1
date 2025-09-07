@@ -1,29 +1,31 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8"/>
-    <title>Thanks</title>
-    <link rel="stylesheet" href="styles/main.css"/>
+    <meta charset="utf-8">
+    <title>Email List - Thanks</title>
+    <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 </head>
 <body>
-<main class="container">
-    <h1>Thanks for joining our list</h1>
+<h1>Thanks for joining our email list</h1>
 
-    <p>Here is the information that you entered:</p>
+<p>Here is the information that you entered:</p>
 
-    <ul>
-        <li>First name: ${user.firstName}</li>
-        <li>Last name: ${user.lastName}</li>
-        <li>Email: ${user.email}</li>
-        <li>Date of birth: ${user.dob}</li>
-        <li>Heard about us: ${user.hearAbout}</li>
-        <li>Receive CDs offers: ${user.receiveCds ? "Yes" : "No"}</li>
-        <li>Receive email announcements: ${user.receiveEmails ? "Yes" : "No"}</li>
-        <li>Preferred contact: ${user.contactBy}</li>
-    </ul>
+<label>Email:</label>
+<span>${user.email}</span><br/>
+<label>First Name:</label>
+<span>${user.firstName}</span><br/>
+<label>Last Name:</label>
+<span>${user.lastName}</span><br/>
 
-    <p><a href="index.html">Back to survey</a></p>
-</main>
+<p>To enter another email address, click on the Back
+    button in your browser or the Return button below.</p>
+
+<form action="emailList" method="get">
+    <input type="hidden" name="action" value="join"/>
+    <input type="submit" value="Return"/>
+</form>
+
+<%@ include file="includes/footer.jsp" %>
 </body>
 </html>

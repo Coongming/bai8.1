@@ -1,19 +1,24 @@
+package vn.edu.hcmute.fit.demo1;
 
-package murach.business;
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private String dob;
-    private String hearAbout;
-    private boolean receiveCds;
-    private boolean receiveEmails;
-    private String contactBy;
 
     public User() {
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
     }
 
-    // Getters & Setters
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -36,45 +41,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public String getHearAbout() {
-        return hearAbout;
-    }
-
-    public void setHearAbout(String hearAbout) {
-        this.hearAbout = hearAbout;
-    }
-
-    public boolean isReceiveCds() {
-        return receiveCds;
-    }
-
-    public void setReceiveCds(boolean receiveCds) {
-        this.receiveCds = receiveCds;
-    }
-
-    public boolean isReceiveEmails() {
-        return receiveEmails;
-    }
-
-    public void setReceiveEmails(boolean receiveEmails) {
-        this.receiveEmails = receiveEmails;
-    }
-
-    public String getContactBy() {
-        return contactBy;
-    }
-
-    public void setContactBy(String contactBy) {
-        this.contactBy = contactBy;
     }
 }
