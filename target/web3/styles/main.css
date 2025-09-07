@@ -21,4 +21,14 @@ br {
     clear: both;
 }
 #submit {
-    margin-left: 0.5em; }
+    margin-left: 0.5em;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.bold-label {
+    font-weight: bold;
+}

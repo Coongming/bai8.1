@@ -1,40 +1,28 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="https://jakarta.ee/taglibs/standard-3.0" %>
-<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Email List - Thanks</title>
+    <title>Thanks</title>
     <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 </head>
 <body>
 <h1>Thanks for joining our email list</h1>
 
 <p>Here is the information that you entered:</p>
-<label>Email:</label> <span>${user.email}</span><br/>
-<label>First Name:</label> <span>${user.firstName}</span><br/>
-<label>Last Name:</label> <span>${user.lastName}</span><br/>
+<p><span class="bold-label">Email:</span> ${requestScope.user.email}</p>
+<p><span class="bold-label">First Name:</span> ${requestScope.user.firstName}</p>
+<p><span class="bold-label">Last Name:</span> ${requestScope.user.lastName}</p>
 
-<hr>
-<p><strong>Today:</strong> ${requestScope.currentDate}</p>
+<p><span class="bold-label">Current Date:</span> ${requestScope.currentDate}</p>
 
-<hr>
-<p><strong>First two users (session):</strong></p>
-<c:if test="${not empty sessionScope.users}">
-  <c:forEach var="u" items="${sessionScope.users}" begin="0" end="1">
-    <div>- ${u.firstName} ${u.lastName} &lt;${u.email}&gt;</div>
-  </c:forEach>
-</c:if>
+<p>Emails of Two Users have joined: ${sessionScope.users[0].email}, ${sessionScope.users[1].email}</p>
 
-<hr>
-<p><strong>Customer Service:</strong> ${initParam.custServEmail}</p>
+<p>The email of the customer service is</p>
+<p>${initParam.custServEmail}</p>
 
-<p>To enter another email address, click Return.</p>
-<form action="emailList" method="post">
-    <input type="hidden" name="action" value="join"/>
-    <input type="submit" value="Return"/>
+<p>To enter another email address, click on the Back button in your browser or the Return button shown below.</p>
+
+<form action="index.jsp" method="get">
+    <input type="submit" value="Back" id="submit">
 </form>
-
-<%@ include file="includes/footer.jsp" %>
 </body>
 </html>

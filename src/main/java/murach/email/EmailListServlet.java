@@ -1,59 +1,50 @@
 package murach.email;
-
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import murach.business.User;
 
 public class EmailListServlet extends HttpServlet {
+    private ArrayList<User> users;
 
     @Override
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response)
+    public void init() {
+        users = new ArrayList<>();
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("action");
-        if (action == null) action = "join";
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String email = request.getParameter("email");
 
-        String url = "/index.jsp";
+        User user = new User(firstName, lastName, email);
 
-        if ("join".equals(action)) {
-            url = "/index.jsp";
+        // Lưu user vào session list
+        HttpSession session = request.getSession();
+        users.add(user);
+        session.setAttribute("users", users);
 
-        } else if ("add".equals(action)) {
-            String firstName = request.getParameter("firstName");
-            String lastName  = request.getParameter("lastName");
-            String email     = request.getParameter("email");
+        // Lưu user hiện tại
+        request.setAttribute("user", user);
 
-            // user cho EL
-            User user = new User(firstName, lastName, email);
-            request.setAttribute("user", user);
+        // Lưu ngày hiện tại
+        request.setAttribute("currentDate", new Date());
 
-            // (Bài 8-1) Ngày hiện tại cho EL
-            request.setAttribute("currentDate", LocalDate.now());
-
-            // (Bài 8-1) Lưu list user ở session
-            @SuppressWarnings("unchecked")
-            List<User> users = (List<User>) request.getSession().getAttribute("users");
-            if (users == null) users = new ArrayList<>();
-            users.add(user);
-            request.getSession().setAttribute("users", users);
-
-            url = "/thanks.jsp";
-        }
-
+        String url = "/thanks.jsp";
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
     }
