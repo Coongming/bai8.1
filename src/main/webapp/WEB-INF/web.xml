@@ -8,7 +8,7 @@
     <!-- Khai báo Servlet -->
     <servlet>
         <servlet-name>EmailListServlet</servlet-name>
-        <servlet-class>vn.edu.hcmute.fit.demo1.EmailListServlet</servlet-class>
+        <servlet-class>murach.email.EmailListServlet</servlet-class>
     </servlet>
 
     <!-- Mapping URL cho Servlet -->
