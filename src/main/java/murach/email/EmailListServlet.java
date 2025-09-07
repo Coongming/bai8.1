@@ -1,6 +1,9 @@
 package murach.email;
+
 import java.io.IOException;
-import java.time.Year;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -22,17 +25,25 @@ public class EmailListServlet extends HttpServlet {
 
         if ("join".equals(action)) {
             url = "/index.jsp";
+
         } else if ("add".equals(action)) {
             String firstName = request.getParameter("firstName");
             String lastName  = request.getParameter("lastName");
             String email     = request.getParameter("email");
 
+            // user cho EL
             User user = new User(firstName, lastName, email);
             request.setAttribute("user", user);
 
-            // Bước 6: set năm hiện tại để JSP dùng EL hiển thị
-            int currentYear = Year.now().getValue();
-            request.setAttribute("currentYear", currentYear);
+            // (Bài 8-1) Ngày hiện tại cho EL
+            request.setAttribute("currentDate", LocalDate.now());
+
+            // (Bài 8-1) Lưu list user ở session
+            @SuppressWarnings("unchecked")
+            List<User> users = (List<User>) request.getSession().getAttribute("users");
+            if (users == null) users = new ArrayList<>();
+            users.add(user);
+            request.getSession().setAttribute("users", users);
 
             url = "/thanks.jsp";
         }
